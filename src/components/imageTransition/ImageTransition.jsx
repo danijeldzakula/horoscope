@@ -1,25 +1,27 @@
 import React, { useState, Suspense } from "react"
 import { Transition } from 'react-transition-group'
 
-const duration = 700
-const defaultStyles = {
-    transition: `background-image ${duration}ms ease-in-out`,
-    opacity: 1
-}
-const transitionStyles = {
-    entering: { opacity: 1 },
-    entered: { opacity: 1 },
-    exiting: { opacity: 1 },
-    exited: { opacity: 1 }
-}
 
-export function ImageTransition({ url }) {
-    const [currentUrl, setCurrentUrl] = useState(url)
+export function ImageTransition({ image, speed }) {
+    const [currentUrl, setCurrentUrl] = useState(image)
 
-    console.log(url)
+    const duration = speed || 500
+
+    const defaultStyles = {
+        transition: `background-image ${duration}ms ease-in-out`,
+        opacity: 1
+    }
+    
+    const transitionStyles = {
+        entering: { opacity: 1 },
+        entered: { opacity: 1 },
+        exiting: { opacity: 1 },
+        exited: { opacity: 1 }
+    }
+    
 
     return (
-        <Transition in={url === currentUrl} timeout={duration} onExited={() => setCurrentUrl(url)}>
+        <Transition in={image === currentUrl} timeout={duration} onExited={() => setCurrentUrl(image)}>
             {(state) => (
                 <figure className="figure-image" style={{ backgroundImage: `url('${currentUrl}')`, ...defaultStyles, ...transitionStyles[state]}} />
             )}
