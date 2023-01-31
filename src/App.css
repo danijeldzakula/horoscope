@@ -31,7 +31,7 @@ html, body {
   border-radius: 100%;
   background-color: rgba(0,0,0,.1);
   overflow: hidden;
-  box-shadow: 0 24px 80px rgba(0,0,0,.05);
+  box-shadow: 0 30px 100px rgba(0,0,0,.5);
 }
 
 .box-item {
@@ -39,7 +39,7 @@ html, body {
   width: 60px;
   height: 60px;
   /* background-color: rgba(255,255,255,.15); */
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
   display: block;
   z-index: 20;
   border-radius: 100%;
@@ -50,8 +50,9 @@ html, body {
 }
 
 .box-item .img {
-  width: 40px;
+  width: 50px;
   display: block;
+  filter: drop-shadow(0 0 10px rgba(0,0,0,.3));
 }
 
 .box-item-top,
