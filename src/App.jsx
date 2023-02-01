@@ -50,6 +50,8 @@ function App() {
         // update new data 
         const addUpdateData = results.filter(item => item._id === payload)
         setUpdateData([...updateData, ...addUpdateData])
+        // reset search 
+        setSearch('')
         break;
       case 'remove':
         // update old data 
@@ -57,7 +59,7 @@ function App() {
         setData([...data, ...removeNewResult])
         // update new data 
         const removeUpdateData = updateData.filter(item => item._id !== payload)
-        setUpdateData(removeUpdateData)
+        setUpdateData(removeUpdateData)    
         break;
       default:
         console.warn('Dafault of: handleOnChange function!')
@@ -76,7 +78,7 @@ function App() {
     <div className="App">
       <header className='header'>
         <div className='search-wrapper'>
-          <input type='search' placeholder='Search...' className='input input-full' value={search || ''} onChange={(event) => handleOnSearch(event.target.value)} />
+          <input type='search' placeholder='Search...' className='input input-full' value={search || ''} onChange={(event) => handleOnSearch(event.target.value.toLowerCase())} />
         </div>
       </header>
 
